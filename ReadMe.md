@@ -14,7 +14,9 @@ import {
   Link,
   Route,
   HashHistory,
-  usePush
+  usePush,
+  useHistory,
+  Switch
 } from "@saber2pr/react-router"
 ```
 

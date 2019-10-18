@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { Router, Link, Route, HashHistory, usePush } from "."
+import { Router, Link, Route, HashHistory, usePush, Switch } from "."
 
 const Blog = () => {
   return (
@@ -25,7 +25,7 @@ const Blog = () => {
           return (
             <div>
               blog2
-              <button onClick={() => push("/about")}>about</button>
+              <button onClick={() => push("/关于")}>关于</button>
             </div>
           )
         }}
@@ -45,12 +45,15 @@ export const App = () => {
             <li>
               <Link to="/">home</Link>
               <Link to="/blog/1">blog</Link>
-              <Link to="/about">about</Link>
+              <Link to="/关于">关于</Link>
             </li>
           </ul>
-          <Route exact path="/" component={() => <div>home</div>} />
-          <Route path="/blog" component={() => <Blog />} />
-          <Route path="/about" component={() => <div>about</div>} />
+          <Switch>
+            <Route exact path="/" component={() => <div>home</div>} />
+            <Route path="/blog" component={() => <Blog />} />
+            <Route path="/关于" component={() => <div>关于</div>} />
+            <Route path="*" component={() => <div>404</div>} />
+          </Switch>
         </Router>
       </main>
       <footer>footer</footer>

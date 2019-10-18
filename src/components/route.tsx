@@ -5,13 +5,15 @@
  * @Last Modified time: 2019-10-15 23:26:09
  */
 import React from "react"
-import { RouterContext } from "../../context"
-import { matchPath } from "../../utils"
+import { RouterContext, Location } from "../context"
+import { matchPath, MatchPathResult } from "../utils"
 
 export interface Route {
   path: string
   exact?: boolean
   component: React.ComponentType<any>
+  location?: Location
+  computedMatch?: MatchPathResult
 }
 
 export const Route = ({ component: C, ...options }: Route) => {

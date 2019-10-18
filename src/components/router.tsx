@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-10-15 22:25:07
  */
 import React, { useEffect, useState } from "react"
-import { RouterContext, History } from "../../context"
+import { RouterContext, History } from "../context"
 
 export interface Router {
   history: History

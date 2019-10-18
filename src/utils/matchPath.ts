@@ -9,14 +9,28 @@ export type Options = {
   exact?: boolean
 }
 
-export function matchPath(pathname: string, options: Options) {
+export type MatchPathResult = {
+  path: string
+  url: string
+  isExact: boolean
+}
+
+export function matchPath(pathname: string, options: Options): MatchPathResult {
   const { path, exact = false } = options
   const url = path
+
+  if (path === "*") {
+    return {
+      path,
+      url,
+      isExact: true
+    }
+  }
 
   if (!pathname.startsWith(url)) return
 
   const isExact = pathname === path
-  if (exact && !isExact) return null
+  if (exact && !isExact) return
 
   return {
     path,

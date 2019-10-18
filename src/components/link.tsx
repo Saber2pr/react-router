@@ -5,7 +5,7 @@
  * @Last Modified time: 2019-10-15 21:53:29
  */
 import React from "react"
-import { RouterContext } from "../../context"
+import { RouterContext } from "../context"
 
 export interface Link
   extends React.DetailedHTMLProps<
