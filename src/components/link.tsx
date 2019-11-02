@@ -23,6 +23,7 @@ export const Link = ({ to, onClick, target, ...rest }: Link) => {
         return (
           <a
             {...rest}
+            href=""
             onClick={event => {
               try {
                 if (onClick) onClick(event)
