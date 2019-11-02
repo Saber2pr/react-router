@@ -1,6 +1,6 @@
 {
   "name": "@saber2pr/react-router",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react-router.",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack -w",
