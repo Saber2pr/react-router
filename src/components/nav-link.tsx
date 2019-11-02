@@ -1,6 +1,5 @@
 import React, { CSSProperties } from "react"
-import { RouterContext, Location } from "../context"
-import { matchPath, MatchPathResult } from "../utils"
+import { RouterContext } from "../context"
 import { Link } from "./link"
 
 function joinClassnames(...classnames: string[]) {
@@ -12,7 +11,7 @@ export interface NavLink extends Link {
   activeStyle?: CSSProperties
   className?: string
   exact?: boolean
-  isActive?: (match: MatchPathResult, location: Location) => boolean
+  isActive?: (to: string, contextPath: string) => boolean
   style?: CSSProperties
 }
 
@@ -32,16 +31,9 @@ export function NavLink({
         const currentLocation = context.location
         const { pathname: pathToMatch } = currentLocation
 
-        const escapedPath =
-          to && to.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1")
-
-        const match = escapedPath
-          ? matchPath(pathToMatch, { path: escapedPath, exact })
-          : null
-
-        const isActive = !!(isActiveProp
-          ? isActiveProp(match, context.location)
-          : match)
+        const isActive = isActiveProp
+          ? isActiveProp(to, pathToMatch)
+          : to === pathToMatch
 
         const className = isActive
           ? joinClassnames(classNameProp, activeClassName)

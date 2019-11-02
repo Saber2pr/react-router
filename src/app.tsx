@@ -52,7 +52,11 @@ export const App = () => {
               <NavLink className="a" to="/">
                 home
               </NavLink>
-              <NavLink className="a" to="/blog/1">
+              <NavLink
+                className="a"
+                to="/blog/1"
+                isActive={(to, path) => path.startsWith("/blog")}
+              >
                 blog
               </NavLink>
               <NavLink className="a" to="/关于">
