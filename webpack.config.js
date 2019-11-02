@@ -26,6 +26,15 @@ module.exports = WebpackConfig({
   plugins: [
     new HtmlWebpackPlugin({
       templateContent: templateContent("react-router", {
+        injectHead: `<style>
+          .a {
+            color: black;
+          }
+          .a:active {
+            background: black;
+            color: white;
+          }
+        </style>`,
         injectBody: '<div id="root"></div>'
       })
     }),

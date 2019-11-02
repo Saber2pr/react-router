@@ -2,7 +2,7 @@
  * @Author: saber2pr
  * @Date: 2019-10-15 21:45:45
  * @Last Modified by: saber2pr
- * @Last Modified time: 2019-10-15 21:53:29
+ * @Last Modified time: 2019-11-02 21:00:00
  */
 import React from "react"
 import { RouterContext } from "../context"
@@ -23,7 +23,7 @@ export const Link = ({ to, onClick, target, ...rest }: Link) => {
         return (
           <a
             {...rest}
-            href=""
+            href={"#" + to}
             onClick={event => {
               try {
                 if (onClick) onClick(event)

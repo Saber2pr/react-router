@@ -1,19 +1,25 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { Router, Link, Route, HashHistory, usePush, Switch } from "."
+import { Router, NavLink, Route, HashHistory, usePush, Switch } from "."
 
 const Blog = () => {
   return (
     <>
       <ul>
         <li>
-          <Link to="/blog/1">1</Link>
+          <NavLink className="a" to="/blog/1">
+            1
+          </NavLink>
         </li>
         <li>
-          <Link to="/blog/2">2</Link>
+          <NavLink className="a" to="/blog/2">
+            2
+          </NavLink>
         </li>
         <li>
-          <Link to="/blog/3">3</Link>
+          <NavLink className="a" to="/blog/3">
+            3
+          </NavLink>
         </li>
       </ul>
       <Route path="/blog/1" component={() => <div>blog1</div>} />
@@ -43,9 +49,15 @@ export const App = () => {
         <Router history={HashHistory}>
           <ul>
             <li>
-              <Link to="/">home</Link>
-              <Link to="/blog/1">blog</Link>
-              <Link to="/关于">关于</Link>
+              <NavLink className="a" to="/">
+                home
+              </NavLink>
+              <NavLink className="a" to="/blog/1">
+                blog
+              </NavLink>
+              <NavLink className="a" to="/关于">
+                关于
+              </NavLink>
             </li>
           </ul>
           <Switch>
