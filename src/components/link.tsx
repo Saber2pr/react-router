@@ -9,13 +9,14 @@ import { RouterContext } from "../context"
 
 export interface Link
   extends React.DetailedHTMLProps<
-    React.AnchorHTMLAttributes<HTMLAnchorElement>,
-    HTMLAnchorElement
+  React.AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
   > {
   to: string
+  forwardRef?: React.MutableRefObject<HTMLAnchorElement>
 }
 
-export const Link = ({ to, onClick, target, ...rest }: Link) => {
+export const Link = ({ to, onClick, target, forwardRef, ...rest }: Link) => {
   return (
     <RouterContext.Consumer>
       {context => {
@@ -23,6 +24,7 @@ export const Link = ({ to, onClick, target, ...rest }: Link) => {
         return (
           <a
             {...rest}
+            ref={forwardRef}
             href={"#" + to}
             onClick={event => {
               try {
