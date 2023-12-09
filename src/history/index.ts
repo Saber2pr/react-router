@@ -48,5 +48,3 @@ export const createHashHistory = (): History => {
     push
   }
 }
-
-export const HashHistory = createHashHistory()
