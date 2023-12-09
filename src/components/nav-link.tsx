@@ -27,6 +27,21 @@ export function NavLink({
   useBrowserLink,
   ...rest
 }: NavLink) {
+  if(useBrowserLink) {
+    const pathToMatch = window.location.pathname
+    const isActive = isActiveProp
+    ? isActiveProp(to, pathToMatch)
+    : to === pathToMatch
+
+    const className = isActive
+    ? joinClassnames(classNameProp, activeClassName)
+    : classNameProp
+
+    const style = isActive ? { ...styleProp, ...activeStyle } : styleProp
+
+    return <a className={className} style={style} href={to} {...rest}  />
+  }
+
   return (
     <RouterContext.Consumer>
       {context => {
@@ -43,9 +58,7 @@ export function NavLink({
 
         const style = isActive ? { ...styleProp, ...activeStyle } : styleProp
 
-        if(useBrowserLink) {
-          return <a className={className} style={style} href={to} {...rest}  />
-        }
+       
         return <Link className={className} style={style} to={to} {...rest} />
       }}
     </RouterContext.Consumer>
