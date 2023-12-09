@@ -18,16 +18,18 @@ export type History = {
   push(url: string): void
 }
 
-export const createLocation = (): Location => {
+export const createLocation = (init: boolean): Location => {
   if (window.location.hash) {
     return { pathname: getHash() }
   } else {
-    window.location.hash = "/"
+    if(init) {
+      window.location.hash = "/"
+    }
     return { pathname: "/" }
   }
 }
 
-export const createHashHistory = (): History => {
+export const createHashHistory = ({init}: {init: boolean} = { init: true }): History => {
   const listeners: Listener[] = []
   const listen = (listener: Listener): VoidFunction => {
     listeners.push(listener)
@@ -39,7 +41,7 @@ export const createHashHistory = (): History => {
     listeners.forEach(listener => listener({ ...location, pathname }))
   }
 
-  const location = createLocation()
+  const location = createLocation(init)
   window.addEventListener("popstate", () => push(getHash()))
 
   return {
