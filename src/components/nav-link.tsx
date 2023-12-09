@@ -13,6 +13,7 @@ export interface NavLink extends Link {
   exact?: boolean
   isActive?: (to: string, contextPath: string) => boolean
   style?: CSSProperties
+  useBrowserLink?: boolean
 }
 
 export function NavLink({
@@ -23,6 +24,7 @@ export function NavLink({
   isActive: isActiveProp,
   style: styleProp,
   to,
+  useBrowserLink,
   ...rest
 }: NavLink) {
   return (
@@ -41,6 +43,9 @@ export function NavLink({
 
         const style = isActive ? { ...styleProp, ...activeStyle } : styleProp
 
+        if(useBrowserLink) {
+          return <a className={className} style={style} href={to} {...rest}  />
+        }
         return <Link className={className} style={style} to={to} {...rest} />
       }}
     </RouterContext.Consumer>
