@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { Router, NavLink, Route, HashHistory, usePush, Switch } from "."
+import { Router, NavLink, Route, usePush, Switch, createHashHistory } from "."
 
 const Blog = () => {
   return (
@@ -40,6 +40,7 @@ const Blog = () => {
     </>
   )
 }
+const HashHistory = createHashHistory()
 
 export const App = () => {
   return (
